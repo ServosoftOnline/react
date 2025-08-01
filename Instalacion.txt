@@ -81,9 +81,10 @@ INSTALAR UNA APP CON REACT
 
       - Sustituye a create react app
       - Instalar vite
-          - 1.- npm create vite@latest
-          - 2.- Entro en la carpeta creada e instalo las depedencias iniciales mediante npm install
-          - 3.- Ejecuto npm run dev y compruebo que la instalacion inicial de vite funciona
+          - 1.- npm create vite@latest si quiero crear el proyecto en un nuevo directorio o
+          - 2.- npm create vite@latest . si quiero crearlo en el directorio
+          - 3.- Entro en la carpeta creada e instalo las depedencias iniciales mediante npm install
+          - 4.- Ejecuto npm run dev y compruebo que la instalacion inicial de vite funciona
 
       - Crea una estructura de carpetas donde el archivo main.jsx engloba al componente ppal App.jsx
         - App.jsx se encuentra en el interior de la etiqueta StrictMode
@@ -138,6 +139,14 @@ INSTALAR UNA APP CON REACT
       - Su web: https://styled-components.com/
           - Ir a documentacion/basics/instalacion
           - Copiar en consola: npm install styled-components
+
+    - CONCURRENTLY
+      - Me va a permitir ejecutar de forma simultánea el front y el backend solo escribiendo npm run dev
+      - Debo ejecutar "dev": "vite" para ejecutar vite y que permita desarrollar en front
+      - Debo ejecutar "start": "nodemon index.js" para lanzar el servidor
+      - Añadiendo el script dev": "concurrently \"vite\" \"nodemon index.js\"" en package.json lanzo ambas ordenes simultaneamente
+      - escribiendo solo npm run dev
+      - npm install --save-dev concurrently
 
     - FIREBASE
       - Su web: https://firebase.google.com

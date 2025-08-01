@@ -1,0 +1,438 @@
+INSTALAR UNA APP CON REACT
+
+  - INSTALACIONES OBLIGATORIAS
+
+    - VISUAL STUDIO CODE
+      - Pulsar F11 maximiza o minimiza la app
+
+    - NPM
+      - npm install. Instala todas las dependencias
+      - npm uninstall libreria. Desinstala la libreria que le indiques
+      - npm audit. Hace auditorias
+      - npm audit fix. Intenta reparar vulnerabilidades
+      - npm update. Actualiza las librerias de un proyecto.
+      - npm ls xlsx. Muestra todas las dependencias instaladas.
+
+      
+
+    - NODE.JS
+      - node.js se instala desde: https://nodejs.org/en/download
+        - Ver si tengo instalado node.js y que version: node -v
+    
+    - GIT BASH
+      - Se instala desde: https://git-scm.com/downloads
+      - Integrar la terminal de gitbash en Visual studio code
+      - Evitará tener que abrir git bash en otra ventana externa 
+      - Ctrl + ñ muestra la consola
+      - Ejecutar npm run start para ejecutar proyectos creados con create react app
+      - Si el proyecto ha sido creado mediante vite ejecuto npm run dev
+
+    - CREATE REACT APP
+
+      - En la carpeta donde deseo crear la app ejecuto:
+          - npx create-react-app nombre_de_la_aplicacion_sin_espacios_o_caracteres especiales.
+          - Creará un archivo public/index.html que tendrá un div con un id llamado root y un src/index.js
+
+        - Debo eliminar los archivos qe no valen
+          - En la carperta src quedarán solo:
+            - index.js
+                - En el interior del archivo borro lo siguiente:
+                    - los comentarios
+                    - reportWebVitals()
+                    - import reportWebVitals from './reportWebVitals';
+
+            - app.css
+              - Lo sustituyo por los mios
+
+            - index.css
+              - Los sustituyo por los mios
+            
+            - App.js
+                - Borro su contenido y creo el mio
+                - Importo lo que valla a ir necesitando:
+                  - librerías necesarias
+                    - import React from 'react';
+                    - import styled from 'styled-components';
+                    - import {useState} from 'react';
+                  - Componentes
+                  - Elementos
+                  - css
+                    - import './App.css';
+                        
+                  - Creo la estructura de la funcion ppal:
+                      const App = () => {
+                        return (
+                          <div>
+                            <h1>Hola mundo!!</h1>
+                          </div>    
+                        );
+                      }
+                      export default App;
+                    
+      - Modificaremos el archivo index.js mediante instruciones JSX situadas entre las etiquetas <React.StrictMode>
+      - Mediante el método root.render mostrará el contenido en el navegador
+      - Para ejecutar la app mediante consola entro en la carpeta de la app creada y ejecuto:
+          - npm start   
+
+      - Ver version actual: npx create-react-app --version
+      - Actualizar a la última version: npx create-react-app@latest my-temprary-app
+
+    - VITE
+
+      - Sustituye a create react app
+      - Instalar vite
+          - 1.- npm create vite@latest
+          - 2.- Entro en la carpeta creada e instalo las depedencias iniciales mediante npm install
+          - 3.- Ejecuto npm run dev y compruebo que la instalacion inicial de vite funciona
+
+      - Crea una estructura de carpetas donde el archivo main.jsx engloba al componente ppal App.jsx
+        - App.jsx se encuentra en el interior de la etiqueta StrictMode
+        - StrictMode ayuda a detectar problemas potenciales en la aplicación durante el desarrollo.
+          - Es recomendable dejarla
+       
+      - Pasar una aplicacion de create react app a vite:
+          - 1.- Sobrescribo la carpeta src de la nueva app con la carpeta src de la vieja app
+          - 2.- Copiar todas las dependencias de la vieja app al archivo package.json de la nueva app (dependences)
+          - 3.- Cambio las extensiones de los archivos JAVASCRIPT de js a jsx
+          - 4.- Vuelvo a ejecutar npm install para instalar las depedencias añadidas
+          - 5.- En el archivo index.html en la etiqueta script debe apuntar al archivo correcto
+          - 6.- Puede ser necesario instalar de nuevo algun paquete. Ej: uuid
+
+      - Formas de usar css mediante vite:      
+        - Las uso todas en primeraAPP_vite_pluginSVG
+
+        - Primera forma: importando directamente el archivo.
+          - import './index.css'
+          - <img scr={viteLogo} className ="Logo" alt="React logo"
+          - Siendo Logo una clase definida en index.css
+
+        - Segunda forma: Mediante modulos de css
+          - Ver ejemplo en primeraAPP_vite_pluginSVG sobre como añadir el color rojo en el titulo
+          - Creo un archivo llamado App.module.css que contendrá las reglas que aplicaré al componente App.jsx
+
+          - Importo en App.jsx el archivo App.module.css así: import styles from './App.module.css';
+            - styles contendrá todas las reglas. Puedo llamarlo styles, estilos o lo que quiera.
+            - Para aplicar la regla rojo en App.jsx escribo classname={styles.regla}
+
+        - Tercera forma: Mediante un preprocesador            
+          - scss, sass, less, styl y stylus son ejemplos de preprocesador
+          - Documentacion en la web: https://vitejs.dev/guide/features.html 
+
+          - Usaré sass
+            - Ver ejemplo en primeraAPP_vite_pluginSVG sobre como añadir el color azul
+            - instalacion: npm i sass
+            - Creo un archivo llamado App.scss donde añado la regla css azul 
+            - Importo directamente el archivo igual que en la primera forma
+            - Aplico la regla escribiendo classname="regla"
+            
+        - Cuarta forma: Usando styled components como hasta ahora con create react app
+            
+        
+  - INSTALACIONES OPCIONALES (LIBRERIAS)
+
+    - REACT ROUTER
+      - Su web: https://reactrouter.com
+          - Copiar en la consola: npm install react-router-dom
+
+    - STYLED COMPONENTS
+      - Su web: https://styled-components.com/
+          - Ir a documentacion/basics/instalacion
+          - Copiar en consola: npm install styled-components
+
+    - FIREBASE
+      - Su web: https://firebase.google.com
+      - Usaré la cuenta de oscarfernandezsantiago@gmail.com
+      - Indico como usarlo en su version 10.7.1
+      - Desde la web pinchar en "Comenzar" y seguir sus instrucciones
+      - Podría añadir un servicio gratuito de google llamado google analytics
+      - Podemos acceder a una consola de firebase con servicios que podemos agregar a  nuestro proyecto
+
+      - Despues de hacer lo anterior podemos agregar el nucleo de firebase:
+        - En la web selecciono </> y sigo las instrucciones:
+          - Registro la app y añado el nombre. Escribo el mismo nombre con el que lo cree en visualStudio
+          - Podría seleccionar si quiero configurar firebase hosting
+          - Ejecuto npm install firebase en el proyecto
+          - Creo la carpeta firebase dentro de src donde iría almacenando los archivos relacionados con firebase
+          - Creo en su interior el archivo firebaseConfig.jsx y pego el codigo que me pide añadir firebase
+
+          - Debo modificar el codigo insertado para integrar los SDK o servicios de firebase de esta forma:
+            - El servicio de firebase ya se encuentra importado
+            - Importo el resto de servicios que valla usar
+              - Siguiendo las indicaciones de https://firebase.google.com/docs/web/setup#available-libraries
+             
+            - Protejo mi acceso mediante el uso de vbles de ambiente modificando la cte firebaseConfig
+              - Sigo las instrucciones dejadas en .env.local en la carpeta contactosFirebase
+
+            - Inicio firebase con la configuración y almaceno el resultado en app
+              - const app = initializeApp(firebaseConfig);
+    
+            - Me conecto a firestore, devuelve la base de datos y la almaceno en el objeto db
+              - const db = getFirestore();
+
+            - Me conecto al getauth y almaceno lo devuelto en la cte auth
+              - const auth = getAuth();
+
+            - Exporto el objeto db con la base de datos y la cte auth
+              - export default {db, auth};
+
+      - Después de agregar el núcleo podremos añadir que servicios vamos a utilizar:      
+        - Añado el servicio de Firestore Database
+
+        - Creo la base de datos en la consola de firebase/Cloud Firestore
+          - Me permite inicarla en modo de producción.
+            - Implica modificar las reglas de seguridad asignando permisos de lectura y escritura
+
+          - O crearla en modo de prueba de 30 días pudíendose modificar los días en las reglas
+          - Indico que la ubicación es europa
+
+          - Dentro de las colecciones contenemos un documento por cada dato insertado
+            - Las colecciones equivalen a las tablas y los documentos a los registros.
+            - Añadiré colecciones desde la consola de fireStorage y los documentos ya desde mi código.
+            - Si añadiera documentos a una coleccion que no existe fireStore crea la colección
+
+      - Diferentes servicios o SDK que ofrece FIREBASE:   
+
+        1.- Firestore para crear bases de datos. Proceso descrito anteriormente
+        2.- Authentification para auntentificar usuarios
+          - Ir a consola de firebase/authentificacion/Comenzar
+          - Indico el medio por el cual se puede identificar el usuario. Ej: correo electronico
+          
+        3.- cloud funtions proporciona funciones que podemos ejecutar en el lado del servidor
+
+        4.- hosting para publicar nuestro sitio en internet. Pasos a seguir:
+            - Ejecuto npm run build para construir la carpeta a subir llamada dist
+            - Acceder a la consola de firebase y a Hosting. Muestra los siguientes pasos:
+
+              - Paso 1: Instalar o actualizar FirebaseCli
+                - En consola de visual studio ejecuta npm install -g firebase-tools (Tuve que añadir sudo)
+
+              - Paso 2: Inicialiar el proyecto
+                - En consola de visual studio ejecuta firebase login
+                - Ejecuto firebase init hosting
+
+                  - Respondo a las siguientes preguntas:
+                    - Selecionar Use an existing project
+                    - Selecciono mi proyecto a subir
+                    - Indico la carpeta donde se encuentra guardada. En este caso dist
+                    - Configure as a single-page app. Indico No
+                    - Set up automatic builds and desploys with Github? Y (Muestra los commits en github)
+                    - Escribirá una pagina error 404 o sobreescribirá una si la hubiese
+                    - A la pregunta File dist/index.html already exist. Overwrite. IMPORTANTE: RESPONDER No
+
+                  - Si hubiera respondido Sí a Set up automatic builds and desploys with Github?
+
+                    - Respondería a las siguiente preguntas si quiero usar npm run build:                      
+                      - For which GitHub repository would you like to set up a GitHub workflow? respondí ServosoftOnline/ServosoftOnline.github.io
+                      - Set up the workflow to run a build script before every deploy? respondí No porque ya uso npm run build
+                      - GitHub workflow file for PR previews exists. Overwrite? firebase-hosting-pull-request.yml (y/N) N
+
+                    - Respondería a estas preguntas si prefiero no usar npm run build
+                      - For which GitHub repository would you like to set up a GitHub workflow? respondí ServosoftOnline/ServosoftOnline.github.io
+                      - Set up the workflow to run a build script before every deploy? respondí Si
+
+                - Me genera los archivos .firebaserc y firebase.json
+
+              - Paso 3: Implementar el Firebase Hosting
+                - Ejecuto firebase deploy --only hosting
+                - Se sube el proyecto
+                - Me proporciona los links de acceso para la web y su consola
+                  - Project Console: https://console.firebase.google.com/project/lista-de-gastos-e0c1c/overview
+                  - Hosting URL: https://lista-de-gastos-e0c1c.web.app
+
+            - Si quiero actualizar un hosting ya subido
+              - ejecuto npm run build para modificar la el contenido de la carpeta dist
+              - subo los cambios ejecutando firebase deploy --only hosting
+          
+        5.- cloud storage para subir archivos
+          
+    - REDUX
+      - Su web: https://redux.js.org/introduction/installation
+      - Copiar en consola: npm install redux (Instalacion para JAVASCRIPT)
+      - Copiar tambien: npm install react-redux (Instalacion para react)
+      - No suele usarse. Es recomendable usar CONTEXT API
+
+    - ROLLUP  
+      - Copiar en consola: npm install --save-dev rollup
+    
+    - FONTAWESOME
+      - Su web: https://fontawesome.com/v5/docs/web/use-with/react#get-started
+      
+      - Hay varias formas de hacerlo:
+        - Mediante un plan de react.
+          - A mi no me ha funcionado por ahora.
+          - Pasos:
+            - Copiar en consola:
+              - npm i --save @fortawesome/fontawesome-svg-core.
+                - Aquí me da el error CODE E401. Incorrect or missing password.
+              - npm install --save @fortawesome/free-solid-svg-icons.
+                -  Instala iconos solidos.
+              - npm install --save @fortawesome/react-fontawesome
+
+    - UUID.
+      - Paquete que permite generar ids únicos sin duplicados
+          - Su web: https://www.npmjs.com/package/uuid
+          - Instalar el paquete: npm install uuid
+          - Importar el paquete: import { v4 as uuidv4 } from 'uuid';
+          - LLamar a la funcion: uuidv4()
+
+    - WEBFONTLOADER
+      - Permite descargar y usar una fuente de google fonts
+      - Instalar el paquete: npm i webfontloader
+      
+      - Copiar la siguiente estructura en main.jsx o index.jsx antes de llamar al componente ppal:
+        - import WebFont from 'webfontloader';
+        - WebFont.load({
+              google: {
+              families: ['nombre de la fuente a cargar:tamaño1, tamaño2, ...', 'nombre de la fuente a cargar si falla el primero']
+            }
+          });
+
+    - REACT-HELMET-ASYNC
+      - Permite cambiar el favicon
+      - Su web: https://www.npmjs.com/package/react-helmet-async
+
+      - Crea un componente donde podemos añadir etiquetas que generalmente añadimos en un documento html en el interior de head
+        - <meta charSet>, <title>, <link>. Este ultimo lo uso para cambiar el favicon.
+
+      - Instalar el paquete: npm i react-helmet-async
+      - Importar el paquete: import {Helmet, HelmetProvider} from 'react-helmet-async';
+      - Importo la imagen: import favicon from './assets/imagen.png'
+
+      - Lo uso antes de BrowserRouter asi:
+        - <HelmetProvider>
+            <Helmet>
+              <link rel="shortcut icon" href={favicon} type="image/x-icon"/>
+            <Helmet />
+            // resto de la aplicacion
+          </HelmetProvider>
+
+
+    - PLUGIN VITE-PLUGIN-SVGR
+      - Crea componentes a partir de imagenes SVG
+      - Su web: https://www.npmjs.com/package/vite-plugin-svgr
+      - Instalar el paquete: npm i vite-plugin-svgr
+
+      - Importo el plugin en vite.config.js
+        - import svgr from "vite-plugin-svgr";
+        - Lo añado en plugins importados: plugins: [react(), svgr()],
+
+      - Importo en el archivo jsx donde valla a usarlo:
+        - import Componente from './assets/imagen.svg?react'
+        - Lo llamo así:
+          - <Componente/>
+
+    - REACT DAYPICKER Y DATE-FNS
+      - DayPicker
+        - Permite crear calendarios
+        - web: https://react-day-picker.js.org/
+
+      - date-fns 
+        - Librería que permite trabajar con fechas
+        - web: https://date-fns.org/
+      
+      - instalacion: npm install react-day-picker date-fns
+        - Instala los dos paquetes a la vez.
+
+      - Importacion:
+        - DayPicker
+
+          - import { DayPicker } from 'react-day-picker';
+          - import 'react-day-picker/dist/style.css';
+
+          - Al llamar al componente DayPicker debo asignarle propiedades:
+            - mode="single" permite seleccionar un día
+            - onSelect={funcion} permite ejecutar una función cuando seleccione un dia
+            - selected={estado_con_la_fecha_seleccionada} permite almacenar la fecha seleccionada
+            - footer={footer} permite añadir un pié
+
+        - date-fns
+          - import { format } from 'date-fns';
+          - import { es } from "date-fns/locale";   Español
+          - import { getUnixTime } from "date-fns"; Transforma una fecha en segundos
+          - import { fromUnixTime } from "date-fns";  Transforma segundos en fecha
+          - import { startOfMonth } from 'date-fns'; Obtiene la fecha de inicio del mes actual
+          - import { endOfMonth } from 'date-fns'; Obtiene la fecha del fin del mes actual
+
+          - Al llamar a la funcion format asigno el formato a partir de una serie de caracteres:
+            - dd mostraría el dia de la fecha
+            - MMMM mostraría el mes completo en letra
+            - yyyy mostraría el año
+
+          Ejemplos:
+            - format(fromUnixTime(fechaEnSegundos), "dd 'de' MMMM 'de' yyyy", {locale: es})
+              - Formatea una fecha en segundos en día de mes de año en español
+            - format(fecha, "dd 'de' MMMM 'de' yyyy", {locale: es})
+              - Formatea una fecha en día de mes de año en español
+
+    - LEAFLET
+
+      - Permite instalar mapas y añadir marcadores con ubicaciones definidas mediante una latitud y una longitud
+        - Instalacion: npm install leaflet react-leaflet
+
+      - Para evitar que se superpongan marcadores se usa leaflet.markercluster para crear un grupo con los marcadores cercanos
+        - Instalacion: npm install leaflet.markercluster
+      
+      - O tambien puedo usar leaflet-spiderfier que separa ambos marcadores
+        - Instalacion: npm install leaflet-spiderfier
+
+
+    
+    - BIBLIOTECAS PARA IMPORTAR ARCHIVOS EXCEL: 
+
+      - XLSX
+        - ESTA EN DESUSO!!!!!!!. LA SUSTITUÍ POR EXCELJS
+        - Permite importar un archivo excel
+        - Documentacion: https://www.npmjs.com/package/xlsx
+        - Importacion: npm install xlsx
+
+      - XLSX-POPULATE
+        - Igual que XLSX pero valido solo en backend. En mi proyecto de gestor de actuaciones no pude usarlo
+        - Documentacion: https://www.npmjs.com/package/@xlsx/xlsx-populate
+        - Video demostracion: https://www.youtube.com/watch?v=B6AuiFpICIc
+        - Instalacion: npm install xlsx-populate
+        - Importacion: import XlsxPopulate from 'xlsx-populate';
+        - Usos:
+            - XlsxPopulate.fromBlankAsync(). Para empezar un archivo en blanco
+            - XlsxPopulate.fromDataAsync(). Usar archivo con datos
+            - XlsxPopulate.fromFileAsync(). Para poder leer de un archivo   
+            - Se gestionan como promesas. Puedo usar .then o async/await   
+
+            - sheet son paginas, cell son celdas y value su contenido  
+        
+        - Para leer archivos xlsx desde visual studio code necesito instalar una extension. Ejemplo: excel viewver
+
+      - EXCELJS
+        - Me lo sugirio CHATGPT. Funciona de maravilla. NO USAR XLSX
+        - npm install exceljs
+   
+    -  FUNCIONES DE REACT
+
+      - REACT.MEMO  
+
+        - Esta relacionado con el hook useCallback
+        - Solo se usaría en funciones pesadas
+        - Cuando se produce un cambio de estado se vuelve a recargar todo el codigo. Si existen varios componentes se recargaran todos.
+
+        - react.memo soluciona esto y optimiza la aplicacion guardando componentes en memoria y solo lo cambiará si sus propiedades cambian.
+          - Para ello en lugar de exportar por defecto el componente añadimos React.memo y entre parentesis ponemos el nombre del componente:
+            - Ejemplo: Sustituyo export default Componente por export default React.memo(Componente);
+
+        - Cuando cambia un estado se vuelve a cargar todo el componente y las funciones que pueda tener este se crean de nuevo
+          - Esto ocasiona que se ejecuten de nuevo los componentes que dependen de esta función sin que sea necesario
+          - Aqui actuaría el hook useCallback guardando la función en memoria
+            - Al hook debo pasarle una función y un arreglo de dependencia como en los useEffect. Se ejecutará de nuevo si cambia su dependencia
+
+        - Ver ejemplo en Tutoriales/react/practicas/vite/reactMemo
+          - En el componente encabezado de este ejemplo usaré export default React.memo(encabezado)
+          - En el componente ppal App.jsx usaré el hook useCallback
+
+        - Permitiría mejorar el rendimiento en el caso que se presente lentitud. Por ahora no voy a aplicarlo.
+
+        
+        
+
+
+
+
+
+  - EN LA APP APRENDIENDO REACT DESCRIBO LOS FUNDAMENTOS DE REACT

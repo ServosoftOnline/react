@@ -1,0 +1,47 @@
+<!--
+    CONSIDERACIONES PARA CREAR APP CON REACT: 
+        - Creo un contenedor div con el id app donde trabajare casi todo el tiempo con javascript
+        - En el interior de la etiqueta body añado los enlaces para añadir react y react Dom
+        - Debajo de los enlaces añado los elementos de la siguiente forma:
+            - Accedo al contenedor cuyo id es app
+            - Creo los elementos
+            - Renderizo los elementos dentro del contenedor mediante el dom
+        - Hay formas más fáciles de hacer esto. Que se veran en siguientes aplicaciones
+ -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Mi primera App React</title>
+</head>
+<body>
+
+    <div id ="app">
+
+    </div>
+
+    <!-- ENLACES REACT Y REACT DOM -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/index.min.js"></script> -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    
+    <!-- ELEMENTOS REACT -->
+    <script>
+        // Accedo al contenedor app
+        const contenedor = document.getElementById('app');
+        
+        // Creo un elemento: Elemento, atributos, texto que tiene dentro
+        const encabezado = React.createElement('h1', {}, 'Hola Mundo!');
+
+        // Renderizo: Encabezado, contenedor
+        ReactDOM.render(encabezado, contenedor);
+    </script>
+    
+    
+</body>
+</html>

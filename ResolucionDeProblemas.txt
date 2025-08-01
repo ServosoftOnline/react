@@ -1,0 +1,35 @@
+PRIMER PROBLEMA RESUELTO: Actualizar nodejs.
+
+🛠️ Paso 1: Instalar NVM
+Ejecuta este comando en tu terminal:
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+Esto descargará e instalará nvm.
+
+🔁 Paso 2: Recargar tu terminal
+
+Después de instalar nvm, necesitas cerrar y volver a abrir la terminal, o bien ejecutar este comando:
+source ~/.bashrc
+También puede ser ~/.zshrc o ~/.profile si usas otro shell. Pero en tu caso, con bash, este comando es correcto.
+
+
+✅ Paso 3: Verificar que nvm funciona
+
+Ejecuta: nvm --version
+Deberías ver algo como: 0.39.7
+
+
+📦 Paso 4: Instalar Node.js 22.12.0
+
+Ahora sí, puedes instalar y usar la versión requerida:
+nvm install 22.12.0
+nvm use 22.12.0
+
+Verifica con:
+node -v
+# Debe ser: v22.12.0
+
+
+📌 Paso 5 (opcional): Establecer como predeterminada
+
+Si quieres que siempre use esta versión por defecto:
+nvm alias default 22.12.0

@@ -1,0 +1,17 @@
+.boton {
+    background: lightblue;
+    display: inline-block;
+    border: none;
+    padding: 20px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    transition: .3s ease all;
+    margin: 10px 10px 10px 0px;
+}
+
+.boton:hover {
+    background: blue;
+    color: #fff;
+}
